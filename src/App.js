@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import {useDispatch} from "react-redux";
+import TodoList from "./components/TodoList";
+import "./style/App.css";
+import AddTaskForm from "./components/AddTaskForm.jsx";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useDispatch();
+
+    const addTask = (name) => {
+        dispatch({type: 'ADD_TASK', payload: { id: Date.now(), name }});
+    }
+
+    const removeTask = (id) => {
+        dispatch({type: 'REMOVE_TASK', payload: id});
+    }
+
+    return (
+        <div className="App">
+            <TodoList remove={removeTask}/>
+            <AddTaskForm addTask={addTask}/>
+        </div>
+    );
 }
 
 export default App;
