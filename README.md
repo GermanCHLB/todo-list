@@ -1,1 +1,1 @@
-surge: https://github.com/GermanCHLB/todo-list.git
+surge: https://german13389-todolist.surge.sh/
