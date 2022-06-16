@@ -14,9 +14,13 @@ function App() {
         dispatch({type: 'REMOVE_TASK', payload: id});
     }
 
+    const changeIsDone = (id) => {
+        dispatch({type: 'CHANGE_IS_DONE', payload: id});
+    }
+
     return (
         <div className="App">
-            <TodoList remove={removeTask}/>
+            <TodoList change={changeIsDone} remove={removeTask}/>
             <AddTaskForm addTask={addTask}/>
         </div>
     );
